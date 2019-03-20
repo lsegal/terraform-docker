@@ -9,5 +9,18 @@ https://hub.docker.com/r/lsegal/terraform
 Run with:
 
 ```sh
-docker run lsegal/terraform:0.12.0-beta1 --help
+docker run -v $(pwd):/tf lsegal/terraform:0.12.0-beta1 --help
+```
+
+The `-v $(pwd):/tf` mount attaches your local workspace to
+the image so it can operate on your host directory. If you
+prefer to work in containers, you can create a Dockerfile
+to manage state:
+
+```dockerfile
+FROM lsegal/terraform:0.12.0-beta1
+COPY . /tf/
+
+RUN terraform init
+RUN terraform apply -auto-approve
 ```
