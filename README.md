@@ -9,8 +9,10 @@ https://hub.docker.com/r/lsegal/terraform
 Run with:
 
 ```sh
-docker run -v $(pwd):/tf lsegal/terraform:0.12.0-beta1 --help
+docker run -v $(pwd):/tf lsegal/terraform:0.12.0-beta1 version
 ```
+
+## Usage Notes
 
 The `-v $(pwd):/tf` mount attaches your local workspace to
 the image so it can operate on your host directory. If you
