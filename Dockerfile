@@ -9,7 +9,7 @@ RUN mkdir /build
 RUN for f in *.zip; do unzip $f -d /build; done
 
 FROM alpine
-RUN apk add -U git
+RUN apk add -U git openssh
 COPY --from=build /build/* /usr/local/bin/
 WORKDIR /tf
 ENTRYPOINT [ "terraform" ]
